@@ -34,4 +34,5 @@ def create_release_branch():
     print(push_release_branch)
 
 set_release_version()
+update_version_in_dev_branch()
 create_release_branch()
