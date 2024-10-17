@@ -18,15 +18,18 @@ def set_release_version():
         print(f'File is empty or is not an int: {value_error}')
         exit()
     
-def create_release_branch():
-    add_new_version_file_to_dev_branch = subprocess.run(['git', 'add', '.'], capture_output=True, text=True)
+
+def update_version_in_dev_branch():
+    add_new_version_file_to_dev_branch = subprocess.run(['git', 'add', 'version.txt'], capture_output=True, text=True)
     commit_new_version_to_dev_branch = subprocess.run(['git', 'commit', '-m', f'"bump version to {set_new_version}"'], capture_output=True, text=True)
     push_new_version_to_dev_branch = subprocess.run(['git', 'push'], capture_output=True, text=True)
-    create_release_branch = subprocess.run(['git', 'branch', f'release/{set_new_version}'], capture_output=True, text=True)
-    push_release_branch = subprocess.run(['git', 'push', 'origin', f'release/{set_new_version}'], capture_output=True, text=True)
     print(add_new_version_file_to_dev_branch)
     print(commit_new_version_to_dev_branch)
     print(push_new_version_to_dev_branch)
+
+def create_release_branch():
+    create_release_branch = subprocess.run(['git', 'branch', f'release/{set_new_version}'], capture_output=True, text=True)
+    push_release_branch = subprocess.run(['git', 'push', 'origin', f'release/{set_new_version}'], capture_output=True, text=True)
     print(create_release_branch)
     print(push_release_branch)
 
