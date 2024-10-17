@@ -20,7 +20,8 @@ def set_release_version():
     
 
 def update_version_in_dev_branch():
-    set_user_identity = subprocess.run(['git', 'config', '--global', 'user.name', f'"{os.environ.get('GITHUB_ACTOR')}"'])
+    github_actor = os.environ.get('GITHUB_ACTOR')
+    set_user_identity = subprocess.run(['git', 'config', '--global', 'user.name', f'"{github_actor}"'])
     set_email = subprocess.run(['git', 'config', '--global', 'user.email', 'github-actions[bot]@users.noreply.github.com'])
     add_new_version_file_to_dev_branch = subprocess.run(['git', 'add', 'version.txt'], capture_output=True, text=True)
     commit_new_version_to_dev_branch = subprocess.run(['git', 'commit', '-m', f'"bump version to {set_new_version}"'], capture_output=True, text=True)
