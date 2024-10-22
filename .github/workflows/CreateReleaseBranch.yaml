@@ -20,4 +20,4 @@ jobs:
           python-version: '3.11'
       
       - name: create_release_gh_actions
-        run: python create_release_gh_actions.py
+        run: python ./git-scripts-gh-actions/create_release_gh_actions.py
