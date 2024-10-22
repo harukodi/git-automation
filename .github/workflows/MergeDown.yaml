@@ -1,4 +1,4 @@
-name: CreateReleaseBranch
+name: MergeDown
 
 on:
   workflow_dispatch:
@@ -19,5 +19,5 @@ jobs:
         with:
           python-version: '3.11'
       
-      - name: create_release_gh_actions
+      - name: merge_down_gh_actions
         run: python create_release_gh_actions.py
