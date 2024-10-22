@@ -19,7 +19,7 @@ def merge_release_branch_to_main():
     git_pull = subprocess.run(["git", "pull"])
     merge_release_branch_to_main = subprocess.run(["git", "merge", f"release/{release_version}"])
     push_to_main = subprocess.run(["git", "push"])
-    print(checkout_to_main_branch, merge_release_branch_to_main, push_to_main, git_fetch, git_pull)
+    print(git_fetch, checkout_to_main_branch, git_pull, merge_release_branch_to_main, push_to_main)
     
 
 fetch_release_version()
