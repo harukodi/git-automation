@@ -14,14 +14,12 @@ def fetch_release_version():
         exit()
     
 def merge_release_branch_to_main():
-    git_fetch = subprocess.run(["git", "fetch"])
-    git_pull = subprocess.run(["git", "pull"])
     github_actor = os.environ.get('GITHUB_ACTOR')
     set_user_identity = subprocess.run(['git', 'config', '--global', 'user.name', f'"{github_actor}"'])
     set_email = subprocess.run(['git', 'config', '--global', 'user.email', 'github-actions[bot]@users.noreply.github.com'])
-    checkout_to_main_branch = subprocess.run(["git", "checkout", "main"])
-    git_add = subprocess.run(["git", "add", "."])
-    merge_release_branch_to_main = subprocess.run(["git", "merge", f"origin/release/{release_version}", "--allow-unrelated-histories"])
+    git_fetch = subprocess.run(["git", "fetch"])
+    git_pull = subprocess.run(["git", "pull"])x
+    merge_main_to_develop = subprocess.run(["git", "merge", f"main", "--allow-unrelated-histories"])
     push_to_main = subprocess.run(["git", "push"])
 
 fetch_release_version()
