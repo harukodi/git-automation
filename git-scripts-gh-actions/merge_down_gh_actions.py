@@ -18,11 +18,10 @@ def merge_release_branch_to_main():
     set_user_identity = subprocess.run(['git', 'config', '--global', 'user.name', f'"{github_actor}"'])
     set_email = subprocess.run(['git', 'config', '--global', 'user.email', 'github-actions[bot]@users.noreply.github.com'])
     git_fetch = subprocess.run(["git", "fetch"])
-    git_checkout_develop = subprocess.run(["git", "checkout", "develop"])
     git_pull = subprocess.run(["git", "pull"])
     merge_main_to_develop = subprocess.run(["git", "merge", "origin/main", "--allow-unrelated-histories"])
     push_to_develop = subprocess.run(["git", "push"])
-    print(set_user_identity, set_email, git_fetch, git_checkout_develop ,git_pull, merge_main_to_develop, push_to_develop)
+    print(set_user_identity, set_email, git_fetch ,git_pull, merge_main_to_develop, push_to_develop)
 
 fetch_release_version()
 merge_release_branch_to_main()
