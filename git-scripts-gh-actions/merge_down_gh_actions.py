@@ -20,6 +20,7 @@ def merge_release_branch_to_main():
     set_user_identity = subprocess.run(['git', 'config', '--global', 'user.name', f'"{github_actor}"'])
     set_email = subprocess.run(['git', 'config', '--global', 'user.email', 'github-actions[bot]@users.noreply.github.com'])
     checkout_to_main_branch = subprocess.run(["git", "checkout", "main"])
+    git_add = subprocess.run(["git", "add", "."])
     merge_release_branch_to_main = subprocess.run(["git", "merge", f"origin/release/{release_version}", "--allow-unrelated-histories"])
     push_to_main = subprocess.run(["git", "push"])
 
